@@ -25,7 +25,7 @@ Se ninguém responde, ele se torna coordenador.
 Caso contrário, espera que outro processo assuma o papel de coordenador.
 
 ## 🏁 Como Executar
-1- Clone o repositório: git clone https://github.com/Ronaldo-Correia/Sistema-Legado--ADD-Padroes.git
+1- Clone o repositório: git clone https://github.com/marceloteclas/ATV--Sistema-Distribu-do-Bully-e-Anel-.git
 
 2- Navegue até o diretório do projeto:
 cd ATV--Sistema-Distribu-do-Bully-e-Anel-
