@@ -25,32 +25,22 @@ Se ninguém responde, ele se torna coordenador.
 Caso contrário, espera que outro processo assuma o papel de coordenador.
 
 ## 🏁 Como Executar
-Clone o repositório
-```bash
-git clone https://github.com/seu-usuario/algoritmo-bully-distribuido.git
-cd algoritmo-bully-distribuido
+1- Clone o repositório: git clone https://github.com/Ronaldo-Correia/Sistema-Legado--ADD-Padroes.git
 
+2- Navegue até o diretório do projeto:
+cd ATV--Sistema-Distribu-do-Bully-e-Anel-
 
-### 📷 Exemplo de Saída
+3- Execute o programa no arquivo 'main.java' ao clicar no botao "Run" na sua IDEA.
 
-```txt
-P5 iniciou eleição...
-P5 se tornou o novo COORDENADOR
-P2 detectou falha do coordenador!
-P2 iniciou eleição...
-P4 se tornou o novo COORDENADOR
+## 🛠️ Estrutura de Arquivos
 
---- CENÁRIO A: P5 retorna ao sistema ---
+📁 algoritmo-bully-distribuido/
 
-P5 iniciou eleição...
-P5 se tornou o novo COORDENADOR
-
---- CENÁRIO B: P5 e P4 falham simultaneamente ---
-
-P2 detectou falha do coordenador!
-P3 iniciou eleição...
-P3 se tornou o novo COORDENADOR
-
+├── Main.java               
+├── Processo.java          
+├── EleicaoService.java     
+├── README.md              
+└── RelatorioTecnico.pdf   
 
 
 
