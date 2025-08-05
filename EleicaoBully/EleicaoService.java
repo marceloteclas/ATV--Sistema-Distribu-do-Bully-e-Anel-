@@ -1,10 +1,20 @@
 package EleicaoBully;
 
-import EleicaoBully.Processo;
 import java.util.List;
 
+/**
+ * Classe responsável por implementar o algoritmo de eleição Bully.
+ * Gerencia o início da eleição e a notificação do novo coordenador.
+ */
 public class EleicaoService {
 
+    /**
+     * Inicia o algoritmo de eleição Bully.
+     * O processo solicitante envia mensagens para todos com ID maior e espera resposta.
+     * Se não houver resposta, ele se torna o novo coordenador.
+     * @param solicitante Processo que detectou a falha e iniciou a eleição
+     * @param todosProcessos Lista de todos os processos do sistema
+     */
     public void iniciarEleicao(Processo solicitante, List<Processo> todosProcessos) {
         System.out.println("P" + solicitante.getIdProcesso() + " iniciou eleição...");
 
@@ -17,6 +27,7 @@ public class EleicaoService {
             }
         }
 
+        // Se não houve resposta de nenhum processo com ID maior, solicitante vira coordenador
         if (!houveResposta) {
             solicitante.setCoordenador(true);
             System.out.println("P" + solicitante.getIdProcesso() + " se tornou o novo COORDENADOR");
@@ -24,6 +35,11 @@ public class EleicaoService {
         }
     }
 
+    /**
+     * Notifica todos os processos ativos sobre o novo coordenador eleito.
+     * @param coordenador Processo eleito como novo coordenador
+     * @param todosProcessos Lista de todos os processos do sistema
+     */
     public void notificarCoordenador(Processo coordenador, List<Processo> todosProcessos) {
         for (Processo p : todosProcessos) {
             if (p.getIdProcesso() != coordenador.getIdProcesso() && p.isAtivo()) {

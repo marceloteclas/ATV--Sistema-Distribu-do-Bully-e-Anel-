@@ -1,48 +1,37 @@
 package EleicaoBully;
 
-import java.util.ArrayList;
-import java.util.List;
-
+/**
+ * Classe principal para simulação do algoritmo de eleição por anel.
+ * Executa dois cenários de falha e recuperação de processos.
+ */
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        EleicaoService eleicaoService = new EleicaoService();
-        List<Processo> processos = new ArrayList<>();
+        Monitor monitor = new Monitor(5); // 5 processos: IDs 0 a 4
+        monitor.iniciar();
 
-        for (int i = 1; i <= 5; i++) {
-            processos.add(new Processo(i, processos, eleicaoService));
-        }
-
-        // Iniciar todos os processos (threads)
-        for (Processo p : processos) {
-            p.start();
-        }
-
-        // Aguarda 2 segundos e define P5 como coordenador
+        // Aguarda 2 segundos e mostra coordenador inicial
         Thread.sleep(2000);
-        processos.get(4).iniciarEleicao(); // P5
 
-        // Aguarda 8 segundos e simula falha de P5
-        Thread.sleep(8000);
-        System.out.println("\n--- CENÁRIO A: Falha no coordenador (P5) ---\n");
-        processos.get(4).desativar(); // P5 falha
+        // Cenário A: Coordenador falha e retorna
+        System.out.println("\n--- CENÁRIO A: Falha no coordenador ---\n");
+        monitor.falharProcesso(monitor.getCoordenador());
 
-        // Aguarda 8 segundos para permitir eleição automática
+        // Aguarda 8 segundos para eleição
         Thread.sleep(8000);
 
-        // CENÁRIO A: P5 retorna e tenta reassumir
-        System.out.println("\n--- CENÁRIO A: P5 retorna ao sistema ---\n");
-        processos.get(4).ativar(); // P5 volta
-        processos.get(4).iniciarEleicao(); // P5 tenta reassumir
+        System.out.println("\n--- CENÁRIO A: Coordenador retorna ao sistema ---\n");
+        monitor.recuperarProcesso(4); // Supondo que o maior ID é 4
+        new AlgoritmoAnel(monitor).iniciarEleicao();
 
         // Aguarda 10 segundos antes do cenário B
         Thread.sleep(10000);
 
-        // CENÁRIO B: Falha de múltiplos processos
-        System.out.println("\n--- CENÁRIO B: P5 e P4 falham simultaneamente ---\n");
-        processos.get(3).desativar(); // P4 falha
-        processos.get(4).desativar(); // P5 falha de novo
+        // Cenário B: Falha de múltiplos processos
+        System.out.println("\n--- CENÁRIO B: Múltiplos processos falham ---\n");
+        monitor.falharProcesso(3);
+        monitor.falharProcesso(4);
 
-        // Aguarda 8 segundos para permitir nova eleição entre P1, P2, P3
+        // Aguarda 8 segundos para nova eleição
         Thread.sleep(8000);
 
         System.out.println("\n--- FIM DA SIMULAÇÃO ---\n");
