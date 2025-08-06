@@ -12,7 +12,7 @@ Este projeto simula um sistema distribuído com múltiplos processos que utiliza
 - ✅ **Cenário A**: coordenador falha e retorna após eleição
 - ✅ **Cenário B**: múltiplos processos falham simultaneamente
 - ✅ Registro detalhado de logs no terminal
-- 
+  
 ## 🧠 Conceito – Algoritmo de Bully
 O algoritmo Bully funciona da seguinte forma:
 
@@ -26,14 +26,15 @@ Caso contrário, espera que outro processo assuma o papel de coordenador.
 
 ## 🗳️ Algoritmo de Eleição Distribuída (Anel)
 
-##📌 Descrição
--✅ 5 processos (P1 a P5) simulados por threads Java
--✅ Implementação do algoritmo Anel
--✅ O token de eleição circula no anel até que o coordenador seja definido
--✅ Considera falha do coordenador e reinício automático do processo
--✅ Cenário A: coordenador falha e eleição é iniciada por outro processo
--✅ Cenário B: falhas múltiplas e reeleição com token circular
--✅ Registro detalhado de logs no terminal
+## 📌 Descrição
+
+- ✅ 5 processos (P1 a P5) simulados por threads Java
+- ✅ Implementação do algoritmo Anel
+- ✅ O token de eleição circula no anel até que o coordenador seja definido
+- ✅ Considera falha do coordenador e reinício automático do processo
+- ✅ Cenário A: coordenador falha e eleição é iniciada por outro processo
+- ✅ Cenário B: falhas múltiplas e reeleição com token circular
+- ✅ Registro detalhado de logs no terminal
 
 ## 🧠 Conceito – Algoritmo de Anel
 O algoritmo de eleição Anel funciona da seguinte forma:
