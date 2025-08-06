@@ -24,6 +24,28 @@ Se ninguém responde, ele se torna coordenador.
 
 Caso contrário, espera que outro processo assuma o papel de coordenador.
 
+## 🗳️ Algoritmo de Eleição Distribuída (Anel)
+
+##📌 Descrição
+-✅ 5 processos (P1 a P5) simulados por threads Java
+-✅ Implementação do algoritmo Anel
+-✅ O token de eleição circula no anel até que o coordenador seja definido
+-✅ Considera falha do coordenador e reinício automático do processo
+-✅ Cenário A: coordenador falha e eleição é iniciada por outro processo
+-✅ Cenário B: falhas múltiplas e reeleição com token circular
+-✅ Registro detalhado de logs no terminal
+
+## 🧠 Conceito – Algoritmo de Anel
+O algoritmo de eleição Anel funciona da seguinte forma:
+
+Quando um processo detecta a falha do coordenador, inicia uma eleição e envia um token com seu ID ao próximo processo no anel.
+
+Cada processo ao receber o token compara seu ID com os IDs no token e adiciona o seu, se for maior.
+
+O token circula até retornar ao iniciador, que então identifica o processo com o maior ID e o declara como novo coordenador.
+
+Todos os processos são notificados do novo coordenador.
+
 ## 🏁 Como Executar
 1- Clone o repositório: git clone https://github.com/marceloteclas/ATV--Sistema-Distribu-do-Bully-e-Anel-.git
 
