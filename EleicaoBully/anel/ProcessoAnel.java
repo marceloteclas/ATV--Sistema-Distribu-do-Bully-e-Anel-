@@ -1,7 +1,5 @@
 package EleicaoBully.anel;
 
-import EleicaoBully.Monitor;
-
 /**
  * Classe que representa um processo participante do sistema distribuído.
  * Cada processo possui um ID, pode estar ativo/inativo e pode ser eleito coordenador.

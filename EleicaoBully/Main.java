@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import EleicaoBully.anel.AlgoritmoAnel;
+import EleicaoBully.anel.Monitor;
 import EleicaoBully.bully.EleicaoServiceBully;
 import EleicaoBully.bully.ProcessoBully;
 

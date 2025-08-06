@@ -1,7 +1,5 @@
 package EleicaoBully.anel;
 
-import EleicaoBully.Monitor;
-
 /**
  * Classe que implementa o algoritmo de eleição por anel.
  * Responsável por coordenar a eleição de um novo coordenador quando necessário.

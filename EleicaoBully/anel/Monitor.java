@@ -1,8 +1,5 @@
-package EleicaoBully;
+package EleicaoBully.anel;
 import java.util.*;
-
-import EleicaoBully.anel.AlgoritmoAnel;
-import EleicaoBully.anel.ProcessoAnel;
 
 /**
  * Classe responsável por gerenciar os processos e o coordenador.
