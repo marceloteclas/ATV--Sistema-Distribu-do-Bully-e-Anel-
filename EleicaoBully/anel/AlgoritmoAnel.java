@@ -1,4 +1,6 @@
-package EleicaoBully;
+package EleicaoBully.anel;
+
+import EleicaoBully.Monitor;
 
 /**
  * Classe que implementa o algoritmo de eleição por anel.
@@ -26,7 +28,7 @@ public class AlgoritmoAnel {
         int idMaior = -1; // Armazena o maior ID encontrado
 
         while (true) {
-            Processo p = monitor.getProcesso(atual);
+            ProcessoAnel p = monitor.getProcesso(atual);
             if (p.isAtivo()) {
                 monitor.log("Processo " + atual + " participa da eleição.");
                 if (atual > idMaior) {

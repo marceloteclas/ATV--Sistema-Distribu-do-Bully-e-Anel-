@@ -1,12 +1,15 @@
 package EleicaoBully;
 import java.util.*;
 
+import EleicaoBully.anel.AlgoritmoAnel;
+import EleicaoBully.anel.ProcessoAnel;
+
 /**
  * Classe responsável por gerenciar os processos e o coordenador.
  * Permite simular falhas, recuperações e iniciar eleições.
  */
 public class Monitor {
-    private List<Processo> processos; // Lista de processos do sistema
+    private List<ProcessoAnel> processos; // Lista de processos do sistema
     private int coordenador; // ID do coordenador atual
 
     /**
@@ -16,7 +19,7 @@ public class Monitor {
     public Monitor(int n) {
         processos = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            processos.add(new Processo(i, this));
+            processos.add(new ProcessoAnel(i, this));
         }
         coordenador = n - 1; // Inicialmente o de maior ID
     }
@@ -25,7 +28,7 @@ public class Monitor {
      * Inicia todos os processos e informa o coordenador inicial.
      */
     public void iniciar() {
-        for (Processo p : processos) {
+        for (ProcessoAnel p : processos) {
             p.start();
         }
         log("Coordenador inicial: " + coordenador);
@@ -54,14 +57,14 @@ public class Monitor {
     /**
      * Retorna o processo pelo ID.
      */
-    public Processo getProcesso(int id) {
+    public ProcessoAnel getProcesso(int id) {
         return processos.get(id);
     }
 
     /**
      * Retorna a lista de processos.
      */
-    public List<Processo> getProcessos() {
+    public List<ProcessoAnel> getProcessos() {
         return processos;
     }
 

@@ -1,11 +1,13 @@
-package EleicaoBully;
+package EleicaoBully.anel;
+
+import EleicaoBully.Monitor;
 
 /**
  * Classe que representa um processo participante do sistema distribuído.
  * Cada processo possui um ID, pode estar ativo/inativo e pode ser eleito coordenador.
  * Os processos são gerenciados por um Monitor.
  */
-public class Processo extends Thread {
+public class ProcessoAnel extends Thread {
     private int id; // Identificador único do processo
     private boolean ativo; // Indica se o processo está ativo
     private boolean coordenador = false; // Indica se é o coordenador atual
@@ -25,7 +27,7 @@ public class Processo extends Thread {
      * @param id Identificador do processo
      * @param monitor Referência ao monitor
      */
-    public Processo(int id, Monitor monitor) {
+    public ProcessoAnel(int id, Monitor monitor) {
         this.id = id;
         this.monitor = monitor;
         this.ativo = true;
