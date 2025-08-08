@@ -1,4 +1,4 @@
-package EleicaoBully.bully;
+package EleicaoBullyAnel.bully;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;

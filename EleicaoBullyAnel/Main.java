@@ -1,16 +1,16 @@
-package EleicaoBully;
+package EleicaoBullyAnel;
 
+import EleicaoBullyAnel.anel.AlgoritmoAnel;
+import EleicaoBullyAnel.anel.Monitor;
+import EleicaoBullyAnel.bully.EleicaoServiceBully;
+import EleicaoBullyAnel.bully.ProcessoBully;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import EleicaoBully.anel.AlgoritmoAnel;
-import EleicaoBully.anel.Monitor;
-import EleicaoBully.bully.EleicaoServiceBully;
-import EleicaoBully.bully.ProcessoBully;
-
 public class Main {
     public static void main(String[] args) throws InterruptedException {
+        // Função principal: solicita ao usuário qual algoritmo de eleição deseja simular
         Scanner scanner = new Scanner(System.in);
         System.out.println("Escolha o algoritmo de eleição:");
         System.out.println("1 - Algoritmo Bully");
@@ -19,16 +19,18 @@ public class Main {
         int opcao = scanner.nextInt();
         scanner.close();
 
+        // Executa o algoritmo escolhido
         if (opcao == 1) {
-            executarBully();
+            executarBully(); // Simula o algoritmo Bully
         } else if (opcao == 2) {
-            executarAnel();
+            executarAnel(); // Simula o algoritmo Anel
         } else {
             System.out.println("Opção inválida.");
         }
     }
 
     private static void executarBully() throws InterruptedException {
+        // Cria e inicia os processos para o algoritmo Bully
         EleicaoServiceBully eleicaoService = new EleicaoServiceBully();
         List<ProcessoBully> processos = new ArrayList<>();
 
@@ -37,55 +39,55 @@ public class Main {
         }
 
         for (ProcessoBully p : processos) {
-            p.start();
+            p.start(); // Inicia cada processo (thread)
         }
 
         Thread.sleep(2000);
         System.out.println("\n--- Iniciando eleição com P5 ---\n");
-        processos.get(4).iniciarEleicao();
+        processos.get(4).iniciarEleicao(); // P5 inicia a eleição
 
         Thread.sleep(8000);
         System.out.println("\n--- CENÁRIO A: Falha no coordenador (P5) ---\n");
-        processos.get(4).desativar();
+        processos.get(4).desativar(); // Simula falha do coordenador
 
         Thread.sleep(8000);
         System.out.println("\n--- CENÁRIO A: P5 retorna ao sistema ---\n");
-        processos.get(4).ativar();
-        processos.get(4).iniciarEleicao();
+        processos.get(4).ativar(); // Coordenador retorna
+        processos.get(4).iniciarEleicao(); // Inicia nova eleição
 
         Thread.sleep(10000);
         System.out.println("\n--- CENÁRIO B: P5 e P4 falham simultaneamente ---\n");
-        processos.get(3).desativar();
-        processos.get(4).desativar();
+        processos.get(3).desativar(); // Simula falha de P4
+        processos.get(4).desativar(); // Simula falha de P5
 
         Thread.sleep(8000);
         System.out.println("\n--- FIM DA SIMULAÇÃO ---");
         for (ProcessoBully p : processos) {
-    p.encerrar();
-}
-
+            p.encerrar(); // Encerra todos os processos
+        }
     }
 
     private static void executarAnel() throws InterruptedException {
+        // Cria e inicia os processos para o algoritmo Anel
         Monitor monitor = new Monitor(5);
-        monitor.iniciar();
+        monitor.iniciar(); // Inicia o monitor e os processos
 
         Thread.sleep(2000);
 
         System.out.println("\n--- CENÁRIO A: Falha no coordenador (Anel) ---\n");
-        monitor.falharProcesso(monitor.getCoordenador());
+        monitor.falharProcesso(monitor.getCoordenador()); // Simula falha do coordenador
 
         Thread.sleep(8000);
 
         System.out.println("\n--- CENÁRIO A: Coordenador retorna ao sistema ---\n");
-        monitor.recuperarProcesso(4);
-        new AlgoritmoAnel(monitor).iniciarEleicao();
+        monitor.recuperarProcesso(4); // Coordenador retorna
+        new AlgoritmoAnel(monitor).iniciarEleicao(); // Inicia nova eleição
 
         Thread.sleep(10000);
 
         System.out.println("\n--- CENÁRIO B: Múltiplos processos falham ---\n");
-        monitor.falharProcesso(3);
-        monitor.falharProcesso(4);
+        monitor.falharProcesso(3); // Simula falha de P3
+        monitor.falharProcesso(4); // Simula falha de P4
 
         Thread.sleep(8000);
         System.out.println("\n--- FIM DA SIMULAÇÃO ---");

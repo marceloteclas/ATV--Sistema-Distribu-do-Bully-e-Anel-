@@ -1,4 +1,4 @@
-package EleicaoBully.anel;
+package EleicaoBullyAnel.anel;
 
 /**
  * Classe que implementa o algoritmo de eleição por anel.

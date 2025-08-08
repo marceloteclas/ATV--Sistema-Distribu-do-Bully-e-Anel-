@@ -1,26 +1,26 @@
-package EleicaoBully.bully;
+package EleicaoBullyAnel.anel;
 
 import java.util.List;
 
 /**
- * Classe responsável por implementar o algoritmo de eleição Bully.
+ * Classe responsável por implementar o algoritmo de eleição por Anel.
  * Gerencia o início da eleição e a notificação do novo coordenador.
  */
-public class EleicaoServiceBully {
+public class EleicaoServiceAnel {
 
     /**
-     * Inicia o algoritmo de eleição Bully.
+     * Inicia o algoritmo de eleição por Anel.
      * O processo solicitante envia mensagens para todos com ID maior e espera resposta.
      * Se não houver resposta, ele se torna o novo coordenador.
      * @param solicitante Processo que detectou a falha e iniciou a eleição
      * @param todosProcessos Lista de todos os processos do sistema
      */
-    public void iniciarEleicao(ProcessoBully solicitante, List<ProcessoBully> todosProcessos) {
+    public void iniciarEleicao(ProcessoAnel solicitante, List<ProcessoAnel> todosProcessos) {
         System.out.println("P" + solicitante.getIdProcesso() + " iniciou eleição...");
 
         boolean houveResposta = false;
 
-        for (ProcessoBully p : todosProcessos) {
+        for (ProcessoAnel p : todosProcessos) {
             if (p.getIdProcesso() > solicitante.getIdProcesso() && p.isAtivo()) {
                 System.out.println("P" + solicitante.getIdProcesso() + " envia ELEICAO para P" + p.getIdProcesso());
                 houveResposta = true;
@@ -40,8 +40,8 @@ public class EleicaoServiceBully {
      * @param coordenador Processo eleito como novo coordenador
      * @param todosProcessos Lista de todos os processos do sistema
      */
-    public void notificarCoordenador(ProcessoBully coordenador, List<ProcessoBully> todosProcessos) {
-        for (ProcessoBully p : todosProcessos) {
+    public void notificarCoordenador(ProcessoAnel coordenador, List<ProcessoAnel> todosProcessos) {
+        for (ProcessoAnel p : todosProcessos) {
             if (p.getIdProcesso() != coordenador.getIdProcesso() && p.isAtivo()) {
                 p.receberCoordenador(coordenador.getIdProcesso());
             }

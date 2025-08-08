@@ -1,4 +1,4 @@
-package EleicaoBully.anel;
+package EleicaoBullyAnel.bully;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import java.util.List;
  * Classe responsável por implementar o algoritmo de eleição Bully.
  * Gerencia o início da eleição e a notificação do novo coordenador.
  */
-public class EleicaoServiceAnel {
+public class EleicaoServiceBully {
 
     /**
      * Inicia o algoritmo de eleição Bully.
@@ -15,12 +15,12 @@ public class EleicaoServiceAnel {
      * @param solicitante Processo que detectou a falha e iniciou a eleição
      * @param todosProcessos Lista de todos os processos do sistema
      */
-    public void iniciarEleicao(ProcessoAnel solicitante, List<ProcessoAnel> todosProcessos) {
+    public void iniciarEleicao(ProcessoBully solicitante, List<ProcessoBully> todosProcessos) {
         System.out.println("P" + solicitante.getIdProcesso() + " iniciou eleição...");
 
         boolean houveResposta = false;
 
-        for (ProcessoAnel p : todosProcessos) {
+        for (ProcessoBully p : todosProcessos) {
             if (p.getIdProcesso() > solicitante.getIdProcesso() && p.isAtivo()) {
                 System.out.println("P" + solicitante.getIdProcesso() + " envia ELEICAO para P" + p.getIdProcesso());
                 houveResposta = true;
@@ -40,8 +40,8 @@ public class EleicaoServiceAnel {
      * @param coordenador Processo eleito como novo coordenador
      * @param todosProcessos Lista de todos os processos do sistema
      */
-    public void notificarCoordenador(ProcessoAnel coordenador, List<ProcessoAnel> todosProcessos) {
-        for (ProcessoAnel p : todosProcessos) {
+    public void notificarCoordenador(ProcessoBully coordenador, List<ProcessoBully> todosProcessos) {
+        for (ProcessoBully p : todosProcessos) {
             if (p.getIdProcesso() != coordenador.getIdProcesso() && p.isAtivo()) {
                 p.receberCoordenador(coordenador.getIdProcesso());
             }

@@ -1,4 +1,4 @@
-package EleicaoBully.anel;
+package EleicaoBullyAnel.anel;
 
 /**
  * Classe que representa um processo participante do sistema distribuído.
